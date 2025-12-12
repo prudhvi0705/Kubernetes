@@ -6,18 +6,18 @@ metadata:
     project: roboshop
   annotations:
     jenkins.url: "https://jenkins.joindevops.com/build/5"
-  resources:
+  
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    resources:
     requests:
       cpu: "100mi"
       memory: "64M"
     limits:
       cpu: "250mi"
       memory: "128M"
-
-spec:
-  containers:
-  - name: nginx
-    image: nginx
     envFrom:
     - configMapRef:
         name: pod-config
