@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: error-test
+  labels:
+    name: error-test
+    project: test
+    version: v1
+    usage: practice
+
+spec:
+  containers:
+  - name: nginx
+    image: nginnxxxxxxxxxxx
