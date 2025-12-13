@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  labels:
+    component: mongodb
+    project: roboshop
+    tier: db
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: mongodb
+      project: roboshop
+      tier: db
+  template:
+    metadata:
+      labels:
+        component: mongodb
+        project: roboshop
+        tier: db
+    spec:
+      containers:
+      - name: mongodb
+        image: prudhvimv/mongodb:v1
