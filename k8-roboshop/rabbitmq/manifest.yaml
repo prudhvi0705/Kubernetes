@@ -25,7 +25,7 @@ spec:
       containers:
       - name: rabbitmq
         image: rabbitmq:3
-        envFrom:
+        env:
           - name: RABBITMQ_DEFAULT_USER
             value: roboshop
           - name: RABBITMQ_DEFAULT_PASS
