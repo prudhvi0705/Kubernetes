@@ -26,9 +26,9 @@ spec:
       - name: frontend
         image: prudhvimv/frontend:v1
         imagePullPolicy: Always
-        envFrom:
-        - configMapRef:
-            name: frontend
+        # envFrom:
+        # - configMapRef:
+        #     name: frontend
 
         ports:
         - name: liveness-port
