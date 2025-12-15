@@ -1,0 +1,71 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pod-config
+data:
+  my.cnf: | 
+    [mysqld]
+    innodb_redo_log_capacity = 2G
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  namespace: roboshop
+  labels:
+    component: mysql
+    project: roboshop
+    tier: db
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: mysql
+      project: roboshop
+      tier: db
+  template:
+    metadata:
+      labels:
+        component: mysql
+        project: roboshop
+        tier: db
+    spec:
+      containers:
+      - name: mysql
+        image: prudhvimv/mysql:v1
+        imagePullPolicy: Always
+        # readinessProbe:
+        #   tcpSocket:
+        #     port: 27017
+        #   initialDelaySeconds: 15
+        #   periodSeconds: 10
+        # livenessProbe:
+        #   tcpSocket:
+        #     port: 27017
+        #   initialDelaySeconds: 15
+        #   periodSeconds: 10
+        volumeMounts:
+        - name: mysql-config
+          mountPath: /etc/mysql/conf.d/my.cnf
+          subPath: my.cnf
+          
+      volumes:
+         - name: mysql-config
+           configMap:
+             name: mysql
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+
+spec:
+  selector:
+      component: mysql
+      project: roboshop
+      tier: db
+  ports:
+    - protocol: TCP
+      port: 3306 #service port
+      targetPort: 3306 #container port
