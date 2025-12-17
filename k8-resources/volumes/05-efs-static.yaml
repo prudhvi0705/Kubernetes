@@ -17,7 +17,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: efs-static-claim
+  name: efs-static
 spec:
   accessModes:
     - ReadWriteOnce
@@ -46,4 +46,4 @@ spec:
   volumes:
   - name: nginx-html
     persistentVolumeClaim:
-     claimName: efs-static-claim
+     claimName: efs-static
