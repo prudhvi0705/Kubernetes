@@ -17,7 +17,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: efs-static
+  name: efs-static-claim
 spec:
   accessModes:
     - ReadWriteOnce
