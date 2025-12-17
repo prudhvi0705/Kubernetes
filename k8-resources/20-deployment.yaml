@@ -43,7 +43,7 @@ metadata:
   name: service-lb-headless
 spec:
   clusterIP: None
-  type: LoadBalancer
+  # type: LoadBalancer
   selector:
       purpose: headless
 
