@@ -9,7 +9,7 @@ spec:
     project: roboshop
     purpose: customer-demand
     importance: high
-  namespace: roboshop
+
   ports:
     - protocol: TCP
       port: 27017 #service port
