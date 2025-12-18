@@ -28,6 +28,7 @@ spec:
     - protocol: TCP
       port: 80 #service port
       targetPort: 80 #container port
+---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
