@@ -53,7 +53,6 @@ spec:
         image: nginx
         ports:
         - containerPort: 80
-          name: web
         volumeMounts:
         - name: www
           mountPath: /usr/share/nginx/html
