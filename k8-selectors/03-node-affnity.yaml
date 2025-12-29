@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: affinity
+  labels:
+    purpose: affinity
+    project: roboshop
+
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: topology.kubernetes.io/zone
+            operator: In
+            values:
+            - us-east-1d
+            
+  replicas: 1
+  selector:
+    matchLabels:
+      purpose: affinity
+
+  template:
+    metadata:
+      labels:
+        purpose: affinity
+ 
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
