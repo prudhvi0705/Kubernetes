@@ -16,6 +16,15 @@ spec:
             operator: In
             values:
             - us-east-1d
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 1
+        preference:
+          matchExpressions:
+          - key: kubernetes.io/instance-type
+            operator: In
+            values:
+            - t3.small   
+            
   containers:
   - name: nginx
     image: nginx
