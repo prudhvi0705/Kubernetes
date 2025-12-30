@@ -1,32 +1,20 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: pod-1
+  name: pod-3
   labels:
     project: roboshop
 
 spec:
-  containers:
-  - name: nginx
-    image: nginx
----
-apiVersion: v1
-kind: Pod
-metadata:
-  name: pod-2
-  labels:
-    app: pod-2
-
-spec:
   affinity:
-    podAffinity:
+    podAntiAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
       - labelSelector:
           matchExpressions:
-          - key: project
+          - key: app
             operator: In
             values:
-            - roboshop
+            - pod-2
         topologyKey: topology.kubernetes.io/zone
 
   containers:
