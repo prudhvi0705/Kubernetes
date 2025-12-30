@@ -1,4 +1,4 @@
 deployment:
   replicas: 2
-  imageversion: latest
+  imageversion: trixie-perl
   servicetype: LoadBalancer

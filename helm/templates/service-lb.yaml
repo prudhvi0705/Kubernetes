@@ -3,11 +3,10 @@ kind: Service
 metadata:
   name: service-lb
 spec:
-  type: LoadBalancer
+  type: {{ .Values.deployment.servicetype}}
   selector:
-      project: roboshop
-      purpose: customer-demand
-      importance: high
+      purpose: helm-demo
+
   ports:
   - protocol: TCP
     port: 80

@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  labels:
+    purpose: helm-demo
+    project: roboshop
+
+spec:
+  replicas: {{ .Values.deployment.replicas }}
+  selector:
+    matchLabels:
+      purpose: helm-demo
+
+  template:
+    metadata:
+      labels:
+        purpose: helm-demo
+ 
+    spec:
+      containers:
+      - name: nginx
+        image: {{ .Values.deployment.imageversion }}
