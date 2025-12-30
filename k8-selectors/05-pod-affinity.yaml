@@ -3,11 +3,32 @@ kind: Pod
 metadata:
   name: pod-1
   labels:
-    name: nginx
     project: roboshop
-    env: development
 
 spec:
   containers:
   - name: nginx
     image: nginx
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-2
+  labels:
+    project: roboshop
+
+spec:
+  affinity:
+    podAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+          - key: project
+            operator: In
+            values:
+            - roboshop
+
+  containers:
+  - name: nginx
+    image: nginx
+    
