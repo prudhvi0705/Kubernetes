@@ -1,0 +1,3 @@
+deployment:
+  imagename: prudhvimv/mongodb
+  imageversion: v1

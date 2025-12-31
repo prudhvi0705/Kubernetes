@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb
+  namespace: roboshop
+  labels:
+    component: mongodb
+    project: roboshop
+    tier: db
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: mongodb
+      project: roboshop
+      tier: db
+  template:
+    metadata:
+      labels:
+        component: mongodb
+        project: roboshop
+        tier: db
+    spec:
+      containers:
+      - name: mongodb
+        image: {{ .Values.deployment.imagename }}:{{ .Values.deployment.imageversion }}
+        imagePullPolicy: Always
+        readinessProbe:
+          tcpSocket:
+            port: 27017
+          initialDelaySeconds: 15
+          periodSeconds: 10
+        livenessProbe:
+          tcpSocket:
+            port: 27017
+          initialDelaySeconds: 15
+          periodSeconds: 10
