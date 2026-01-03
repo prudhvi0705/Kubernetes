@@ -10,7 +10,7 @@ data:
     - groups:
       - roboshop-trainee
       userarn: arn:aws:iam::450558841952:user/suresh
-      username: churesh
+      username: suresh
     - groups:
       - roboshop-admin
       userarn: arn:aws:iam::450558841952:user/ramesh
